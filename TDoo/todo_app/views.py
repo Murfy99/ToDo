@@ -7,7 +7,11 @@ from .serializers import TODOSerializer
 from rest_framework.generics import get_object_or_404
 
 # Create your views here.
-class ListTODOView(generics.ListCreateAPIView):
+class ListTODOView(generics.ListAPIView):
+    queryset = TODO.objects.all()
+    serializer_class = TODOSerializer
+
+class DetailTODOView(generics.RetrieveAPIView):
     queryset = TODO.objects.all()
     serializer_class = TODOSerializer
 
